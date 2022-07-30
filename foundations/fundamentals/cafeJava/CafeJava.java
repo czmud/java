@@ -31,7 +31,7 @@ public class CafeJava {
     	// ** Your customer interaction print statements will go here ** //
         if ( isReadyOrder1 ){
             System.out.println( customer1 + readyMessage );
-            System.out.println( displayTotalMessage + dripCoffeePrice );
+            System.out.println( String.format("And... %s %.2f", displayTotalMessage, dripCoffeePrice ));
         } else {
             System.out.println( customer1 + pendingMessage );
         }
