@@ -4,7 +4,12 @@ public class Hashmatique {
     HashMap<String, String> trackList = new HashMap<String, String>();
     
     public void addNewTrack( String title, String lyrics ){
-        trackList.put(title, lyrics);
+        if ( !trackList.containsKey(title)){
+            trackList.put(title, lyrics);
+            System.out.println("Saved successfully.");
+        } else {
+            System.out.println("Track title already exists. Did not save.");
+        }
         return;
     }
     public String getTrackByTitle( String title ) {
