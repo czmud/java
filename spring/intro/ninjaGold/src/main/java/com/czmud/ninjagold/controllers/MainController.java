@@ -33,40 +33,34 @@ public class MainController {
 	@PostMapping("/find-gold")
 	public String findGold(HttpSession session,
 				@RequestParam(value="activityChar") char activityChar) {
-		int goldEarned = 0; 
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Activity> activityLog = (ArrayList<Activity>) session.getAttribute("activityLog");
 		
+		// switch statement to determine which new completed activity to add to activity log
 		switch(activityChar) {
 		case 'f':
 			activityLog.add(new Farm());
-			goldEarned = activityLog.get(activityLog.size()-1).getGoldEarned();
-			session.setAttribute("activityLog", activityLog );
 			break;
 		case 'c':
 			activityLog.add(new Cave());
-			goldEarned = activityLog.get(activityLog.size()-1).getGoldEarned();
-			session.setAttribute("activityLog", activityLog );
 			break;
 		case 'h':
 			activityLog.add(new House());
-			goldEarned = activityLog.get(activityLog.size()-1).getGoldEarned();
-			session.setAttribute("activityLog", activityLog );
 			break;
 		case 'q':
 			activityLog.add(new Quest());
-			goldEarned = activityLog.get(activityLog.size()-1).getGoldEarned();
-			session.setAttribute("activityLog", activityLog );
 			break;
 		case 's':
 			activityLog.add(new Spa());
-			goldEarned = activityLog.get(activityLog.size()-1).getGoldEarned();
-			session.setAttribute("activityLog", activityLog );
 			break;
 		}
 		
+		// save updated activity log back into session
+		session.setAttribute("activityLog", activityLog );
 		
+		// update gold total based on new completed activity
+		int goldEarned = activityLog.get(activityLog.size()-1).getGoldEarned();
 		session.setAttribute("goldTotal", (int) session.getAttribute("goldTotal") + goldEarned);
 		
 		return "redirect:/gold";
