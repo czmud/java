@@ -16,10 +16,6 @@ public class BookApi {
 	public BookApi(BookService bookService){
 		this.bookService = bookService;
 	}
-	@RequestMapping("/")
-	public String index() {
-		return "howard";
-	}
 	
 	// other methods removed for brevity
 	@RequestMapping(value="/api/books/{id}", method=RequestMethod.PUT)

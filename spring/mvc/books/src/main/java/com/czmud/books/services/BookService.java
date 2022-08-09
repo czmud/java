@@ -28,7 +28,7 @@ public class BookService {
     }
     
     // retrieves a book
-    public Book findBook(Long id) {
+    public Book findBookById(Long id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
         if(optionalBook.isPresent()) {
             return optionalBook.get();
