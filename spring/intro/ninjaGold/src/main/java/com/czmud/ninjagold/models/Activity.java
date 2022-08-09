@@ -28,7 +28,7 @@ public abstract class Activity {
 	
 	public String generateEarningStatement() {
 		return String.format("You entered a %s and earned %d gold. (%s)", name, goldEarned, createdAt.toString());
-	};
+	}
 
 	public String getName() {
 		return name;
@@ -61,6 +61,13 @@ public abstract class Activity {
 	public void setGoldEarned(int goldEarned) {
 		this.goldEarned = goldEarned;
 	}
-	
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 	
 }
