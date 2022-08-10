@@ -39,12 +39,21 @@ public class ExpenseController {
 		return "index.jsp";
 	}
 	
+	@GetMapping("/{expenseId}")
+	public String showExpense( Model model,
+								@PathVariable("expenseId") Long expenseId ) {
+		
+		model.addAttribute("expense", expenseService.findExpenseById( expenseId ));
+		
+		return "showexpense.jsp"; 
+	}
+	
 	@GetMapping("/edit/{expenseId}")
 	public String editExpense( @ModelAttribute("expense") Expense expense, 
 							  Model model,
-							  @PathVariable("expenseId") Long expense_id ) {
+							  @PathVariable("expenseId") Long expenseId ) {
 		
-		model.addAttribute("expense", expenseService.findExpenseById( expense_id ));
+		model.addAttribute("expense", expenseService.findExpenseById( expenseId ));
 		
 		return "editexpense.jsp";
 	}

@@ -20,10 +20,11 @@
 		</tr>
 	<c:forEach var="expense" items="${ expenses }">
 		<tr>
+			<td><a href="/expenses/${ expense.id }"><c:out value="${ expense.name }"/></a></td>
 			<td><c:out value="${ expense.name }"/></td>
 			<td><c:out value="${ expense.vendor }"/></td>
 			<td><c:out value="${ expense.formatAmount() }"/></td>
-			<td><a href="/expenses/edit/<c:out value="${ expense.id }"/>">edit</a></td>
+			<td><a href="/expenses/edit/${ expense.id }">edit</a></td>
 			<td>
 				<form action="/expenses/delete-expense/${ expense.id }" method="post">
 	    			<input type="hidden" name="_method" value="delete">
