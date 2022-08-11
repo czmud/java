@@ -21,7 +21,7 @@
 		<form:input path="vendor"/>
 		<form:errors path="vendor"/><br>
 		<form:label path="amount">Amount</form:label>
-		<form:input path="amount" type="number"/>
+		<form:input path="amount" type="number" step="0.01"/>
 		<form:errors path="amount"/><br>
 		<form:label path="description">Description</form:label>
         <form:textarea path="description"/>
