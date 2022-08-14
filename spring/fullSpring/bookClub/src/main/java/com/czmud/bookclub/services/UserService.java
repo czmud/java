@@ -36,20 +36,20 @@ public class UserService {
 		return userRepository.save( newUser );
 	}
 	
-	public User login( LoginUser newLoginUser, BindingResult result) {
+	public User login( LoginUser newLoginUser, BindingResult bindingResult) {
 		
 		Optional<User> checkForUser = userRepository.findByEmail( newLoginUser.getEmail() );
 		if( checkForUser.isEmpty() ) {
-			result.rejectValue("email", "Matches", "Email not found");
+			bindingResult.rejectValue("email", "Matches", "Email not found");
 			return null;
 		}
 		User user = checkForUser.get();
 		
 		if(!BCrypt.checkpw(newLoginUser.getPassword(), user.getPasswordHash() )) {
-		    result.rejectValue("password", "Matches", "Invalid Password");
+			bindingResult.rejectValue("password", "Matches", "Invalid Password");
 		}
 		
-		if(result.hasErrors()) {
+		if( bindingResult.hasErrors() ) {
 		    return null;
 		}
 	

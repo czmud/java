@@ -7,12 +7,12 @@
 <head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-	<title>Login & Registration</title>
+	<title>Read Share</title>
 </head>
 <body class="container">
 	<div class="d-flex flex-column align-items-center">
-		<h1>Welcome</h1>
-		<p>Join our growing community.</p>
+		<h1>Book Club</h1>
+		<p>A place for friends to share thoughts on books.</p>
 	</div>
 	<div class="d-flex justify-content-center"> 
 		<div class="d-flex flex-column">

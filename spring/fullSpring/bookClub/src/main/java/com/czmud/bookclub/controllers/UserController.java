@@ -47,7 +47,7 @@ public class UserController {
 		Long userId = newUser.getId();
 		session.setAttribute("userId", userId );
 		
-		return "redirect:/dashboard";
+		return "redirect:/books";
 	}
 	
 	@PostMapping("/users/log-user-in")
@@ -55,6 +55,12 @@ public class UserController {
 							 BindingResult bindingResult,
 							 Model model,
 							 HttpSession session) {
+		
+		if( bindingResult.hasErrors() ) {
+			model.addAttribute("newUser", new User());
+			session.invalidate();
+			return "index.jsp";
+		}
 		
 		User user = userService.login( newLoginUser, bindingResult );
 		
@@ -69,23 +75,7 @@ public class UserController {
 		session.setAttribute("userId", userId ); 
 		
 		
-		return "redirect:/dashboard";
-	}
-	
-	
-	@GetMapping("/dashboard")
-	public String dashboard(Model model, HttpSession session ) {
-		
-		if( session.getAttribute("userId") == null ) {
-			session.invalidate();
-			return "redirect:/";
-		}
-		
-		User user = userService.getUserById( (Long) session.getAttribute("userId") );
-		
-		model.addAttribute("user", user);
-		
-		return "dashboard.jsp";
+		return "redirect:/books";
 	}
 	
 	@GetMapping("/users/log-user-out")

@@ -1,17 +1,21 @@
 package com.czmud.bookclub.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -26,11 +30,16 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	private List<Book> books;
+	
 	@NotNull
+	@NotBlank(message="First name must not be blank")
 	@Size( min=2, max=45, message="First name must be between 2 and 45 characters" )
 	//@Pattern(regexp="[a-zA-Z]/g")
 	private String firstName;
 	@NotNull
+	@NotBlank(message="Last name must not be blank")
 	@Size( min=2, max=45, message="Last name must be between 2 and 45 characters" )
 	private String lastName;
 	@NotNull
@@ -39,6 +48,7 @@ public class User {
 	
 	@Transient
 	@NotNull
+	@NotBlank(message="password must not be blank")
 	@Size( min=8, max=128)
 	private String password;
 	@Transient
@@ -142,6 +152,14 @@ public class User {
 
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
     
 }

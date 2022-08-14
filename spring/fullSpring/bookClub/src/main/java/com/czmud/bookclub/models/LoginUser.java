@@ -11,7 +11,6 @@ public class LoginUser {
 	private String email;
 	
 	@NotBlank(message="Password is required")
-	@Size( min=8, max=128)
 	private String password;
 	
 	public LoginUser() {}
