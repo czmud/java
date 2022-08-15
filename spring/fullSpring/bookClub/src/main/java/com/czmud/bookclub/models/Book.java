@@ -33,6 +33,11 @@ public class Book {
 	private User user;
 	
 	@NotNull
+	@ManyToOne( fetch = FetchType.LAZY)
+	@JoinColumn( name="borrower_id" )
+	private User borrower;
+	
+	@NotNull
 	@NotBlank(message="Title must not be blank")
 	private String title;
 	@NotNull
@@ -62,8 +67,14 @@ public class Book {
     }
 
     // UNIQUE METHODS
-    
-    // GETTERS & SETTERS
+    public boolean isBorrowed() {
+    	if( this.user.getId() == this.borrower.getId() ) {
+    		return false;
+    	}
+    	return true;
+    }
+
+	// GETTERS & SETTERS
 	public Long getId() {
 		return id;
 	}
@@ -118,6 +129,14 @@ public class Book {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+    public User getBorrower() {
+		return borrower;
+	}
+
+	public void setBorrower(User borrower) {
+		this.borrower = borrower;
 	}
     
 	

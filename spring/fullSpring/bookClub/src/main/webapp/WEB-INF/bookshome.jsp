@@ -16,6 +16,8 @@
 	
 	<a href="/users/log-user-out">Logout</a><br>
 	
+	<a href="/bookmarket">Book broker</a><br>
+	
 	<a href="/books/new">+Add new book</a><br>
 	
 	<table>

@@ -33,6 +33,9 @@ public class User {
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	private List<Book> books;
 	
+	@OneToMany(mappedBy="borrower", fetch = FetchType.LAZY)
+	private List<Book> borrowedBooks;
+	
 	@NotNull
 	@NotBlank(message="First name must not be blank")
 	@Size( min=2, max=45, message="First name must be between 2 and 45 characters" )
@@ -160,6 +163,14 @@ public class User {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+
+	public List<Book> getBorrowedBooks() {
+		return borrowedBooks;
+	}
+
+	public void setBorrowedBooks(List<Book> borrowedBooks) {
+		this.borrowedBooks = borrowedBooks;
 	}
     
 }

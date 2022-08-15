@@ -18,6 +18,7 @@
 	
 	<form:form action="/books/create-new-book" modelAttribute="newBook">
 		<input type="hidden" name="user" value="${ user.id }">
+		<input type="hidden" name="borrower" value="${ user.id }">
 		
 		<form:label path="title">Title:</form:label>
 		<form:input path="title"/>
