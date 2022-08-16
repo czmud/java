@@ -2,7 +2,6 @@ package com.czmud.bookclub.models;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 public class LoginUser {
 	
