@@ -58,8 +58,6 @@ public class ProductService {
 		updateProduct.getCategories().add( checkForCategory.get() );
 		
 		productRepository.save( updateProduct );
-		
-		return;
 	}
 	
 }
