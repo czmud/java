@@ -2,32 +2,38 @@ import java.util.ArrayList;
 public class TestOrder {
     public static void main(String[] args) {
         
+        CoffeeKiosk kiosk1 = new CoffeeKiosk();
+
         // Menu items
-        Item item1 = new Item("Mocha", 5.50 );
-        Item item2 = new Item("Latte", 5.00 );
-        Item item3 = new Item("Drip Coffee", 6.50 );
-        Item item4 = new Item("Cappuccino", 4.00 );
+        kiosk1.addMenuItem("Mocha", 5.50 );
+        kiosk1.addMenuItem("Latte", 5.00 );
+        kiosk1.addMenuItem("Drip Coffee", 6.50 );
+        kiosk1.addMenuItem("Cappuccino", 4.00 );
     
-        // Order variables -- order1, order2 etc.
-        Order order1 = new Order("Cindhuri");
-        Order order2 = new Order("Jimmy");
-        Order order3 = new Order("Noah");
-        Order order4 = new Order("Sam");
-        Order order5 = new Order();
-        Order order6 = new Order();
+        kiosk1.displayMenu();
 
-        order4.addItem(item3);
-        order4.addItem(item4);
-        order4.addItem(item2);
-        order4.addItem(item4);
+        kiosk1.newOrder();
 
-        System.out.println(order4.getStatusMessage());
-        order4.updateOrderStatus();
-        System.out.println(order4.getStatusMessage());
+        // // Order variables -- order1, order2 etc.
+        // Order order1 = new Order("Cindhuri");
+        // Order order2 = new Order("Jimmy");
+        // Order order3 = new Order("Noah");
+        // Order order4 = new Order("Sam");
+        // Order order5 = new Order();
+        // Order order6 = new Order();
 
-        System.out.println(order4.getOrderTotal());
+        // order4.addItem(item3);
+        // order4.addItem(item4);
+        // order4.addItem(item2);
+        // order4.addItem(item4);
 
-        order4.display();
+        // System.out.println(order4.getStatusMessage());
+        // order4.updateOrderStatus();
+        // System.out.println(order4.getStatusMessage());
+
+        // System.out.println(order4.getOrderTotal());
+
+        // order4.display();
 
         // Commented out from original Order & Items assignment
         // // Print the order1 variable to the console

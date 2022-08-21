@@ -31,7 +31,7 @@ public class Order {
         return orderTotal;
     }
     public void display(){
-        System.out.printf("Customer “Name: %s\n", name);
+        System.out.printf("Customer Name: %s\n", name);
         for ( Item item : items ) {
             System.out.printf("%s - $%.2f\n", item.getName(), item.getPrice());
         }
